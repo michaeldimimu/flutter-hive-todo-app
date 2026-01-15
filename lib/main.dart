@@ -55,7 +55,6 @@ class _HomeState extends State<Home> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // 1. Title Section
             const Padding(
               padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
               child: Text(
@@ -64,7 +63,6 @@ class _HomeState extends State<Home> {
               ),
             ),
 
-            // The main body of your Scaffold
             Expanded(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -74,7 +72,6 @@ class _HomeState extends State<Home> {
                     // Convert the raw box data into usable lists
                     final List allTasks = box.values.toList();
 
-                    // Inside your ValueListenableBuilder in main.dart
                     final activeTasks = allTasks
                         .where((t) => !t['isDone'])
                         .toList();
@@ -126,7 +123,7 @@ class _HomeState extends State<Home> {
               ),
             ),
 
-            // 3. Fixed Bottom Input Row
+            // Fixed Bottom Input Row
             Padding(
               padding: const EdgeInsets.all(20),
               child: Row(
@@ -165,7 +162,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   const SizedBox(width: 10),
-                  // The Add Button
+                  // Add Button
                   GestureDetector(
                     onTap: _addTask,
                     child: Container(
@@ -210,10 +207,8 @@ class _HomeState extends State<Home> {
             "${task.timeStamp.hour.toString().padLeft(2, '0')}:${task.timeStamp.minute.toString().padLeft(2, '0')}";
 
         return ListTile(
-          // Control the distance from the screen edges here
           contentPadding: const EdgeInsets.only(right: 0),
           horizontalTitleGap: 12,
-          // Pulls the text closer to the leading icon
           onTap: () {
             task.isDone = !task.isDone;
             box.putAt(originalIndex, task.toMap());
